@@ -55,17 +55,7 @@
 <script>
 const video = document.getElementById("video");
 
-// Try to unmute automatically (may fail silently)
-setTimeout(() => {
-    video.muted = false;
-    video.play().catch(() => {});
-}, 1000);
 
-// BEST: unmute on any click (guaranteed)
-document.body.addEventListener("click", () => {
-    video.muted = false;
-    video.play();
-});
 
 // Show message when video ends
 video.onended = () => {
