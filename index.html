@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>April Fool 😈</title>
+
+<style>
+    body {
+        margin: 0;
+        overflow: hidden;
+        background: black;
+    }
+
+    video {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        object-fit: cover;
+    }
+
+    #message {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 40px;
+        color: white;
+        display: none;
+        z-index: 2;
+    }
+
+    footer {
+        position: fixed;
+        bottom: 10px;
+        width: 100%;
+        text-align: center;
+        color: white;
+        font-size: 14px;
+        z-index: 2;
+    }
+</style>
+</head>
+
+<body>
+
+<video id="video" autoplay muted playsinline>
+    <source src="vd.mp4" type="video/mp4">
+</video>
+
+<div id="message">😈 Sorry... April Fool 😈</div>
+<footer>Created by Dev</footer>
+
+<script>
+const video = document.getElementById("video");
+
+// Try to unmute automatically (may fail silently)
+setTimeout(() => {
+    video.muted = false;
+    video.play().catch(() => {});
+}, 1000);
+
+// BEST: unmute on any click (guaranteed)
+document.body.addEventListener("click", () => {
+    video.muted = false;
+    video.play();
+});
+
+// Show message when video ends
+video.onended = () => {
+    document.getElementById("message").style.display = "block";
+};
+</script>
+
+</body>
+</html>
